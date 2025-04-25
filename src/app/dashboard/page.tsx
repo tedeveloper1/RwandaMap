@@ -4,9 +4,12 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PieChart, BarChart } from '@mui/x-charts';
 import { FiAlertCircle, FiCheckCircle, FiClock, FiMapPin, FiUpload, FiBarChart2 } from 'react-icons/fi';
+import ProtectedRoute from '../components/ProtectedRoutes';
+import { useAuth } from '../context/AuthContext';
 
 const CitizenDashboard = () => {
   const router = useRouter();
+  const {logout} = useAuth();
   const [activeTab, setActiveTab] = useState('report');
   const [issues, setIssues] = useState([
     {
@@ -92,6 +95,7 @@ const CitizenDashboard = () => {
   };
 
   return (
+    <ProtectedRoute>
     <div className="min-h-screen bg-gray-50">
       {/* Header with Stats */}
       <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -103,7 +107,7 @@ const CitizenDashboard = () => {
             </div>
             <button 
               onClick={() => router.push('/')}
-              className="px-4 py-2 bg-white/40 text-gray-200 font-bold rounded-lg hover:bg-gray-100 flex items-center cursor-pointer hover:text-gray-800 transition-colors duration-200"
+              className="px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-gray-100 flex items-center"
             >
               Sign Out
             </button>
@@ -452,6 +456,7 @@ const CitizenDashboard = () => {
         </div>
       </footer>
     </div>
+    </ProtectedRoute>
   );
 };
 
