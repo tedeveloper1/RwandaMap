@@ -119,7 +119,7 @@ const Register = () => {
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
               <button 
-                onClick={() => router.push('/auth')}
+                onClick={() => router.push('/Auth')}
                 className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors"
               >
                 Already have an account? <span className="font-semibold">Login</span>
