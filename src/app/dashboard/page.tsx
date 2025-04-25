@@ -9,9 +9,36 @@ const CitizenDashboard = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('report');
   const [issues, setIssues] = useState([
-    { id: 1, title: 'Pothole on KG 12 Ave', category: 'Road', status: 'Solved', date: '2023-05-15', location: 'Kigali, Nyarugenge', image: '/road-issue.jpg' },
-    { id: 2, title: 'Broken Street Light', category: 'Electricity', status: 'In Progress', date: '2023-06-02', location: 'Kigali, Gasabo', image: '/light-issue.jpg' },
-    { id: 3, title: 'Clogged Drainage', category: 'Sanitation', status: 'Pending', date: '2023-06-10', location: 'Kigali, Kicukiro', image: '/drainage-issue.jpg' }
+    {
+      id: 1,
+      title: "Pothole on KG 12 Ave",
+      category: "Road",
+      status: "Solved",
+      date: "2023-05-15",
+      location: "Kigali, Nyarugenge",
+      image:
+        "https://media.istockphoto.com/id/538686713/photo/cracked-asphalt-after-earthquake.jpg?s=612x612&w=0&k=20&c=SbzwfmL_xf0rgZ4spkJPZ6wD6tR4AzkYEeA5iyg-_u4=",
+    },
+    {
+      id: 2,
+      title: "Broken Street Light",
+      category: "Electricity",
+      status: "In Progress",
+      date: "2023-06-02",
+      location: "Kigali, Gasabo",
+      image:
+        "https://media.istockphoto.com/id/496026170/photo/broken-street-lamp.jpg?s=612x612&w=0&k=20&c=1bX4binyYkD8P_ZzHbfRTspKowTIGoTkSjxvbcjAkY4=",
+    },
+    {
+      id: 3,
+      title: "Clogged Drainage",
+      category: "Sanitation",
+      status: "Pending",
+      date: "2023-06-10",
+      location: "Kigali, Kicukiro",
+      image:
+        "https://media.istockphoto.com/id/965436718/photo/clogged-sink-pipe.jpg?s=612x612&w=0&k=20&c=c_Sd_yGwrioFdKCRb2dGovsFko7S9L6oH0vITtoZ9ME=",
+    },
   ]);
 
   const [newIssue, setNewIssue] = useState({
@@ -76,7 +103,7 @@ const CitizenDashboard = () => {
             </div>
             <button 
               onClick={() => router.push('/')}
-              className="px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-gray-100 flex items-center"
+              className="px-4 py-2 bg-white/40 text-gray-200 font-bold rounded-lg hover:bg-gray-100 flex items-center cursor-pointer hover:text-gray-800 transition-colors duration-200"
             >
               Sign Out
             </button>
@@ -84,7 +111,7 @@ const CitizenDashboard = () => {
           
           {/* Quick Stats */}
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-white bg-opacity-10 p-4 rounded-lg backdrop-blur-sm">
+            <div className="bg-white/20 border-2 cursor-pointer border-white p-4 rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               <div className="flex items-center">
                 <FiAlertCircle className="text-yellow-300 text-2xl mr-2" />
                 <div>
@@ -93,7 +120,7 @@ const CitizenDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white bg-opacity-10 p-4 rounded-lg backdrop-blur-sm">
+            <div className="bg-white/20 border-2 cursor-pointer border-white p-4 rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               <div className="flex items-center">
                 <FiCheckCircle className="text-green-300 text-2xl mr-2" />
                 <div>
@@ -102,7 +129,7 @@ const CitizenDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white bg-opacity-10 p-4 rounded-lg backdrop-blur-sm">
+            <div className="bg-white/20 border-2 cursor-pointer border-white p-4 rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-200">
               <div className="flex items-center">
                 <FiMapPin className="text-red-300 text-2xl mr-2" />
                 <div>
@@ -321,6 +348,7 @@ const CitizenDashboard = () => {
                         outerRadius: 100,
                         paddingAngle: 5,
                         cornerRadius: 5,
+                        
                       }]}
                     />
                   </div>
