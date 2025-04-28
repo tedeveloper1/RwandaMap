@@ -63,7 +63,7 @@ const Register = () => {
       });
       
       if (response.data.success) {
-        router.push('/auth');
+        router.push('/Auth');
       } else {
         setError(response.data.message || 'Registration failed');
       }
