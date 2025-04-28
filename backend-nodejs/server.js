@@ -8,13 +8,15 @@ dotenv.config();
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000', // or your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api',require('./routes/categoryRoutes'));
+app.use('/api/issue',require('./routes/IssueRoute'));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Database connected'))
