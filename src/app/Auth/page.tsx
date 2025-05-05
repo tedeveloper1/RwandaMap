@@ -1,51 +1,58 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useAuth } from '../context/AuthContext';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useAuth } from "../context/AuthContext";
 
 const Login: React.FC = () => {
   const router = useRouter();
   const { login } = useAuth();
-  
+
+  useEffect(() => {
+    const email = localStorage.getItem("email")
+    if (email) {
+      router.push("/");
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
-  
-  const [error, setError] = useState('');
+
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!formData.email || !formData.password) {
-      setError('Please fill in all required fields');
+      setError("Please fill in all required fields");
       return;
     }
 
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/auth/login',
+        "http://localhost:5000/api/auth/login",
         {
           email: formData.email,
-          password: formData.password
+          password: formData.password,
         },
         {
           headers: {
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -55,17 +62,18 @@ const Login: React.FC = () => {
         login(token); // Should handle token saving and navigation internally
 
         // Optional: store email in sessionStorage for later use
-        sessionStorage.setItem('email', formData.email);
+        sessionStorage.setItem("email", formData.email);
+        localStorage.setItem("email", formData.email); // Store in localStorage as well
       } else {
-        setError('Login failed: Token not provided');
+        setError("Login failed: Token not provided");
       }
     } catch (err: any) {
-      console.error('Login error:', err);
+      console.error("Login error:", err);
 
       if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.message || 'Invalid email or password');
+        setError(err.response?.data?.message || "Invalid email or password");
       } else {
-        setError('An unexpected error occurred.');
+        setError("An unexpected error occurred.");
       }
     } finally {
       setIsSubmitting(false);
@@ -170,7 +178,7 @@ const Login: React.FC = () => {
 
               {/* Remember Me */}
               <div className="flex items-center justify-between">
-                <div className='flex items-center'>
+                <div className="flex items-center">
                   <input
                     id="remember"
                     type="checkbox"

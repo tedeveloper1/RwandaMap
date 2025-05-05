@@ -24,36 +24,12 @@ import {
   ChevronRight,
   ChevronLeft
 } from 'lucide-react';
-
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8 } }
-};
+import Navbar from './components/Navbar';
+import { fadeIn, containerVariants, itemVariants } from './utils/Nav';
+import { useAuth } from './context/AuthContext';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [animationIndex, setAnimationIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [stats, setStats] = useState(null);
@@ -125,120 +101,25 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       <Head>
         <title>RwandaSmartMap - Citizen-Driven Infrastructure Management</title>
-        <meta name="description" content="Report and track public infrastructure issues across Rwanda" />
+        <meta
+          name="description"
+          content="Report and track public infrastructure issues across Rwanda"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {/* Navigation */}
-      <motion.nav 
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        className="bg-white shadow-md sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
-                <MapPin className="h-8 w-8 text-green-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">RwandaSmartMap</span>
-              </div>
-              <div className="hidden md:ml-6 md:flex md:space-x-8">
-                <Link href="/">
-                  <span className="border-b-2 border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">
-                    Home
-                  </span>
-                </Link>
-                <Link href="/dashboard">
-                  <span className="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 text-sm font-medium">
-                    Dashboard
-                  </span>
-                </Link>
-                <Link href="/about">
-                  <span className="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 text-sm font-medium">
-                    About
-                  </span>
-                </Link>
-                <Link href="/contact">
-                  <span className="border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 text-sm font-medium">
-                    Contact
-                  </span>
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium hidden md:block">
-                Report Issue
-              </button>
-              <div className="ml-4 flex items-center md:ml-6">
-                <Link href="/login">
-                  <button className="p-2 rounded-full text-gray-400 hover:text-gray-500 bg-gray-100 flex items-center">
-                    <User className="h-5 w-5" />
-                    <span className="ml-1 text-sm font-medium">Login</span>
-                  </button>
-                </Link>
-              </div>
-              <div className="-mr-2 flex md:hidden">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
-                >
-                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="pt-2 pb-3 space-y-1">
-              <Link href="/">
-                <span className="bg-green-50 text-green-700 block pl-3 pr-4 py-2 text-base font-medium">
-                  Home
-                </span>
-              </Link>
-              <Link href="/dashboard">
-                <span className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium">
-                  Dashboard
-                </span>
-              </Link>
-              <Link href="/about">
-                <span className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium">
-                  About
-                </span>
-              </Link>
-              <Link href="/contact">
-                <span className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 block pl-3 pr-4 py-2 text-base font-medium">
-                  Contact
-                </span>
-              </Link>
-              <div className="mt-4 pl-3 pr-4">
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                  Report Issue
-                </button>
-              </div>
-              <div className="mt-2 pl-3 pr-4">
-                <Link href="/login">
-                  <button className="w-full border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center">
-                    <User className="h-4 w-4 mr-2" />
-                    Login / Register
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </motion.nav>
+      <Navbar
+      />
 
       {/* Hero Section with Kigali Skyline Background */}
       <div className="relative h-screen min-h-[600px]">
         {/* Background Image with overlay */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "linear-gradient(to right, rgba(5, 150, 105, 0.5), rgba(7, 89, 133, 0.5)), url('https://media.gettyimages.com/id/1132673374/photo/kigali-skyline-of-business-district-with-flag-rwanda.jpg?b=1&s=2048x2048&w=0&k=20&c=9nHRNohMnoyIUXK3kXhnjqDyC2U781Q0iGkjpRYYlHM=')"
+            backgroundImage:
+              "linear-gradient(to right, rgba(5, 150, 105, 0.5), rgba(7, 89, 133, 0.5)), url('https://media.gettyimages.com/id/1132673374/photo/kigali-skyline-of-business-district-with-flag-rwanda.jpg?b=1&s=2048x2048&w=0&k=20&c=9nHRNohMnoyIUXK3kXhnjqDyC2U781Q0iGkjpRYYlHM=')",
           }}
         >
           {/* Gradient overlay */}
@@ -248,7 +129,7 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -259,10 +140,12 @@ export default function Home() {
                 <span className="block text-green-200">A Smarter Rwanda</span>
               </h1>
               <p className="mt-3 text-xl text-green-100 sm:mt-5 sm:text-2xl">
-                RwandaSmartMap empowers citizens to report infrastructure issues in real-time, leveraging AI to improve service delivery and national development.
+                RwandaSmartMap empowers citizens to report infrastructure issues
+                in real-time, leveraging AI to improve service delivery and
+                national development.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-green-700 bg-white hover:bg-green-50 md:py-4 md:text-lg md:px-8"
@@ -270,7 +153,7 @@ export default function Home() {
                   <AlertCircle className="mr-2 h-5 w-5" />
                   Report Issue
                 </motion.button>
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-700 bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-8"
@@ -294,40 +177,48 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">AI-Powered Civic Technology</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              AI-Powered Civic Technology
+            </h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-gray-500 sm:mt-4">
-              Our platform leverages artificial intelligence to enhance public service delivery
+              Our platform leverages artificial intelligence to enhance public
+              service delivery
             </p>
           </motion.div>
 
-          <motion.div variants={containerVariants} className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <motion.div
+            variants={containerVariants}
+            className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
+          >
             {[
               {
                 title: "Real-Time Issue Detection",
-                description: "AI analyzes citizen reports to identify emerging issues",
+                description:
+                  "AI analyzes citizen reports to identify emerging issues",
                 icon: <AlertCircle className="h-8 w-8 text-green-600" />,
-                stat: stats?.totalReports?.toLocaleString() || "12,500"
+                stat: stats?.totalReports?.toLocaleString() || "12,500",
               },
               {
                 title: "Predictive Analytics",
-                description: "Anticipate infrastructure problems before they occur",
+                description:
+                  "Anticipate infrastructure problems before they occur",
                 icon: <BarChart2 className="h-8 w-8 text-blue-600" />,
-                stat: stats?.predictionAccuracy || "92%"
+                stat: stats?.predictionAccuracy || "92%",
               },
               {
                 title: "Automated Routing",
                 description: "Reports automatically sent to relevant agencies",
                 icon: <MapIcon className="h-8 w-8 text-purple-600" />,
-                stat: stats?.activeAgencies || "42"
+                stat: stats?.activeAgencies || "42",
               },
               {
                 title: "Resolution Tracking",
                 description: "Monitor progress from report to resolution",
                 icon: <CheckCircle className="h-8 w-8 text-green-600" />,
-                stat: stats?.resolutionRate || "87%"
-              }
+                stat: stats?.resolutionRate || "87%",
+              },
             ].map((feature, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
@@ -336,8 +227,12 @@ export default function Home() {
                 <div className="flex items-center justify-center h-12 w-12 rounded-md bg-white shadow-sm mb-4 mx-auto">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-medium text-center text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm text-center text-gray-500">{feature.description}</p>
+                <h3 className="text-lg font-medium text-center text-gray-900">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-center text-gray-500">
+                  {feature.description}
+                </p>
                 <div className="mt-4 text-3xl font-bold text-center text-green-600">
                   {feature.stat}
                 </div>
@@ -356,28 +251,36 @@ export default function Home() {
         className="bg-gray-50 py-12"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2 variants={itemVariants} className="text-2xl font-bold text-center text-gray-900 mb-8">
+          <motion.h2
+            variants={itemVariants}
+            className="text-2xl font-bold text-center text-gray-900 mb-8"
+          >
             Community Impact
           </motion.h2>
-          
+
           {/* Community Stats Cards */}
-          <motion.div variants={containerVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+          >
             {communityStats.map((stat, index) => (
-              <motion.div 
+              <motion.div
                 key={stat.id}
                 variants={itemVariants}
                 whileHover={{ scale: 1.03 }}
                 className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl"
               >
-                <div className="flex justify-center mb-4">
-                  {stat.icon}
-                </div>
-                <h3 className="text-xl font-bold text-center text-gray-900">{stat.value}</h3>
-                <p className="text-sm text-center text-gray-500">{stat.title}</p>
+                <div className="flex justify-center mb-4">{stat.icon}</div>
+                <h3 className="text-xl font-bold text-center text-gray-900">
+                  {stat.value}
+                </h3>
+                <p className="text-sm text-center text-gray-500">
+                  {stat.title}
+                </p>
               </motion.div>
             ))}
           </motion.div>
-          
+
           {/* Interactive Success Stories */}
           <div className="mt-12">
             <AnimatePresence mode="wait">
@@ -392,51 +295,64 @@ export default function Home() {
                 <div className="grid md:grid-cols-2">
                   {/* Image Side */}
                   <div className="relative h-64 md:h-auto">
-                    <img 
-                      src={successStories[animationIndex].image} 
-                      alt="Success story" 
+                    <img
+                      src={successStories[animationIndex].image}
+                      alt="Success story"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="flex items-center mb-2">
                         {successStories[animationIndex].icon}
-                        <span className="ml-2 text-white font-semibold">{successStories[animationIndex].title}</span>
+                        <span className="ml-2 text-white font-semibold">
+                          {successStories[animationIndex].title}
+                        </span>
                       </div>
                       <div className="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full inline-block text-sm">
                         {successStories[animationIndex].stat}
                       </div>
                     </div>
-                    <button 
+                    <button
                       onClick={prevStory}
                       className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition"
                     >
                       <ChevronLeft className="h-6 w-6" />
                     </button>
-                    <button 
+                    <button
                       onClick={nextStory}
                       className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition"
                     >
                       <ChevronRight className="h-6 w-6" />
                     </button>
                   </div>
-                  
+
                   {/* Content Side */}
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{successStories[animationIndex].title}</h3>
-                    <p className="text-gray-600 mb-6">{successStories[animationIndex].description}</p>
-                    
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {successStories[animationIndex].title}
+                    </h3>
+                    <p className="text-gray-600 mb-6">
+                      {successStories[animationIndex].description}
+                    </p>
+
                     <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-                      <p className="text-green-700">"This platform helped our community get faster responses from local authorities."</p>
+                      <p className="text-green-700">
+                        "This platform helped our community get faster responses
+                        from local authorities."
+                      </p>
                     </div>
-                    
+
                     {/* Progress Indicators */}
                     <div className="mt-8 flex space-x-2 justify-center">
                       {successStories.map((_, index) => (
-                        <button 
+                        <button
                           key={index}
                           onClick={() => setAnimationIndex(index)}
-                          className={`w-3 h-3 rounded-full transition-all duration-300 ${index === animationIndex ? 'bg-green-600 w-6' : 'bg-gray-300'}`}
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === animationIndex
+                              ? "bg-green-600 w-6"
+                              : "bg-gray-300"
+                          }`}
                           aria-label={`View success story ${index + 1}`}
                         />
                       ))}
@@ -459,9 +375,12 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">How RwandaSmartMap Works</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              How RwandaSmartMap Works
+            </h2>
             <p className="mt-3 max-w-2xl mx-auto text-lg text-gray-500 sm:mt-4">
-              A simple process to report issues and contribute to Rwanda's development
+              A simple process to report issues and contribute to Rwanda's
+              development
             </p>
           </motion.div>
 
@@ -471,18 +390,21 @@ export default function Home() {
                 {
                   step: "1",
                   title: "Report an Issue",
-                  description: "Use our app or website to report infrastructure issues with photos and precise location data."
+                  description:
+                    "Use our app or website to report infrastructure issues with photos and precise location data.",
                 },
                 {
                   step: "2",
                   title: "AI Processing",
-                  description: "Our system verifies, categorizes and prioritizes reports using artificial intelligence."
+                  description:
+                    "Our system verifies, categorizes and prioritizes reports using artificial intelligence.",
                 },
                 {
                   step: "3",
                   title: "Resolution & Feedback",
-                  description: "Track resolution progress and receive notifications when issues are resolved."
-                }
+                  description:
+                    "Track resolution progress and receive notifications when issues are resolved.",
+                },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -493,8 +415,12 @@ export default function Home() {
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white mx-auto">
                     <span className="font-bold">{feature.step}</span>
                   </div>
-                  <h3 className="mt-5 text-lg font-medium text-gray-900">{feature.title}</h3>
-                  <p className="mt-2 text-base text-gray-500">{feature.description}</p>
+                  <h3 className="mt-5 text-lg font-medium text-gray-900">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-base text-gray-500">
+                    {feature.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -513,29 +439,40 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-center lg:justify-between">
             <motion.div variants={itemVariants} className="lg:w-1/2">
-              <h2 className="text-2xl font-extrabold sm:text-3xl mb-4">Official Government Partnership</h2>
+              <h2 className="text-2xl font-extrabold sm:text-3xl mb-4">
+                Official Government Partnership
+              </h2>
               <p className="text-lg text-green-100 mb-6">
-                RwandaSmartMap is officially recognized and supported by the Government of Rwanda as part of its Smart Rwanda initiative.
+                RwandaSmartMap is officially recognized and supported by the
+                Government of Rwanda as part of its Smart Rwanda initiative.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="bg-white p-3 rounded-lg">
-                  <img 
-                    src="https://upload.wikimedia.org/wikipedia/commons/1/17/Flag_of_Rwanda.svg" 
-                    alt="Rwanda Flag" 
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/17/Flag_of_Rwanda.svg"
+                    alt="Rwanda Flag"
                     className="h-12"
                   />
                 </div>
                 <div>
                   <p className="font-bold">Ministry of ICT and Innovation</p>
-                  <p className="text-sm text-green-200">Official Technology Partner</p>
+                  <p className="text-sm text-green-200">
+                    Official Technology Partner
+                  </p>
                 </div>
               </div>
             </motion.div>
-            <motion.div variants={itemVariants} className="mt-8 lg:mt-0 lg:w-1/2 lg:pl-12">
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 lg:mt-0 lg:w-1/2 lg:pl-12"
+            >
               <div className="bg-white bg-opacity-10 p-6 rounded-xl border border-green-600 border-opacity-30">
-                <h3 className="text-xl font-bold mb-4">Transparency Dashboard</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Transparency Dashboard
+                </h3>
                 <p className="mb-4 text-green-100">
-                  All reports and resolutions are publicly available through our Open Data portal.
+                  All reports and resolutions are publicly available through our
+                  Open Data portal.
                 </p>
                 <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-green-700 bg-white hover:bg-green-50">
                   Explore Public Data
@@ -559,13 +496,18 @@ export default function Home() {
           <motion.div variants={itemVariants}>
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               <span className="block">Ready to make a difference?</span>
-              <span className="block text-green-600">Join our community today.</span>
+              <span className="block text-green-600">
+                Join our community today.
+              </span>
             </h2>
           </motion.div>
-          <motion.div variants={itemVariants} className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+          <motion.div
+            variants={itemVariants}
+            className="mt-8 flex lg:mt-0 lg:flex-shrink-0"
+          >
             <div className="inline-flex rounded-md shadow">
               <Link href="/register">
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors duration-200 hover:shadow-lg"
@@ -606,30 +548,99 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Navigation</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+                Navigation
+              </h4>
               <ul className="space-y-2">
-                <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
-                <li><Link href="/dashboard" className="text-gray-400 hover:text-white">Dashboard</Link></li>
-                <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
+                <li>
+                  <Link href="/" className="text-gray-400 hover:text-white">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/dashboard"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Contact
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Resources</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+                Resources
+              </h4>
               <ul className="space-y-2">
-                <li><Link href="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
-                <li><Link href="/blog" className="text-gray-400 hover:text-white">Blog</Link></li>
-                <li><Link href="/data" className="text-gray-400 hover:text-white">Open Data</Link></li>
-                <li><Link href="/api" className="text-gray-400 hover:text-white">API</Link></li>
+                <li>
+                  <Link href="/faq" className="text-gray-400 hover:text-white">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-gray-400 hover:text-white">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/data" className="text-gray-400 hover:text-white">
+                    Open Data
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/api" className="text-gray-400 hover:text-white">
+                    API
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+                Connect
+              </h4>
               <ul className="space-y-2">
-                <li><Link href="mailto:info@rwandasmartmap.gov.rw" className="text-gray-400 hover:text-white">Email</Link></li>
-                <li><Link href="tel:+250700123456" className="text-gray-400 hover:text-white">Phone</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">Twitter</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">Facebook</Link></li>
+                <li>
+                  <Link
+                    href="mailto:info@rwandasmartmap.gov.rw"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Email
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="tel:+250700123456"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    Phone
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-400 hover:text-white">
+                    Twitter
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-gray-400 hover:text-white">
+                    Facebook
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -638,13 +649,22 @@ export default function Home() {
               © {new Date().getFullYear()} RwandaSmartMap. All rights reserved.
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
-              <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">
+              <Link
+                href="/privacy"
+                className="text-gray-400 hover:text-white text-sm"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white text-sm">
+              <Link
+                href="/terms"
+                className="text-gray-400 hover:text-white text-sm"
+              >
                 Terms of Service
               </Link>
-              <Link href="/accessibility" className="text-gray-400 hover:text-white text-sm">
+              <Link
+                href="/accessibility"
+                className="text-gray-400 hover:text-white text-sm"
+              >
                 Accessibility
               </Link>
             </div>
