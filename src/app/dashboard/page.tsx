@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-"use client";
-
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-=======
 "use client"
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
   AlertCircle,
   BarChart2,
   CheckCircle,
@@ -47,7 +39,7 @@ import Link from "next/link";
 import PersonalProfile from "../components/PersonalProfile";
 import { containerVariants, itemVariants, fadeIn } from "../utils/Nav";
 
-const Dashboard2 = () => {
+const Dashboard = () => {
   const [reports, setReports] = useState([]);
   const [filteredReports, setFilteredReports] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
@@ -73,12 +65,7 @@ const Dashboard2 = () => {
   const fetchReports = async () => {
     setIsLoading(true);
     try {
-<<<<<<< HEAD
-      const response = await fetch("http://localhost:5000/api/issue/getissue");
-      if (!response.ok) throw new Error("Failed to fetch reports");
-=======
       const response = await fetch('http://localhost:5000/api/issue/getissue');
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
       const data = await response.json();
 const reportList = Array.isArray(data) ? data : data.data || [];
 setReports(reportList);
@@ -94,12 +81,11 @@ setFilteredReports(reportList);
   // Fetch categories from API
   const fetchCategories = async () => {
     try {
-<<<<<<< HEAD
-      const response = await fetch("http://localhost:5000/api/categories");
-      if (!response.ok) throw new Error("Failed to fetch categories");
-=======
+// <<<<<<< HEAD
+//       const response = await fetch("http://localhost:5000/api/categories");
+//       if (!response.ok) throw new Error("Failed to fetch categories");
+// =======
       const response = await fetch('http://localhost:5000/api/categories');
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
       const data = await response.json();
       setCategories(data);
       if (data.length > 0) {
@@ -217,16 +203,16 @@ setFilteredReports(reportList);
           district: formData.location.district,
           sector: formData.location.sector,
           latitude,
-<<<<<<< HEAD
-          longitude,
-        },
-      };
+// <<<<<<< HEAD
+//           longitude,
+//         },
+//       };
 
-      const response = await fetch("http://localhost:5000/api/issue", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-=======
+//       const response = await fetch("http://localhost:5000/api/issue", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+// =======
           longitude
         },
         reportedBy: userId // Include the user ID from sessionStorage
@@ -242,7 +228,6 @@ setFilteredReports(reportList);
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
         },
         body: JSON.stringify(reportPayload),
       });
@@ -262,16 +247,15 @@ setFilteredReports(reportList);
       });
   
     } catch (error) {
-<<<<<<< HEAD
-      console.error("Error submitting report:", error);
-      alert(`Error: ${error.message}`);
-=======
+// <<<<<<< HEAD
+//       console.error("Error submitting report:", error);
+//       alert(`Error: ${error.message}`);
+// =======
       console.error('Error submitting report:', error);
       setSubmitStatus({
         success: false,
         message: error.message || 'Failed to create report'
       });
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
     } finally {
       setIsLoading(false);
     }

@@ -9,6 +9,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const BASE_URL  = "http://localhost:5000"
+
 // Zod validation schema (unchanged)
 const registerSchema = z.object({
   firstname: z.string().min(2, 'First name must be at least 2 characters'),
@@ -64,11 +66,11 @@ const Register = () => {
       };
 
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, 
+        `${BASE_URL}/api/auth/register`,
         payload,
         {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true // Essential for sessions
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true, // Essential for sessions
         }
       );
 
