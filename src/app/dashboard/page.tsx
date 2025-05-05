@@ -363,7 +363,6 @@ setFilteredReports(reportList);
       </motion.header>
 
       {/* Report Form Modal */}
-<<<<<<< HEAD
       <ReportForm
         showReportForm={showReportForm}
         setShowReportForm={setShowReportForm}
@@ -374,7 +373,6 @@ setFilteredReports(reportList);
         handleLocationChange={handleLocationChange}
         isLoading={isLoading}
       />
-=======
       <AnimatePresence>
         {showReportForm && (
           <motion.div
@@ -521,7 +519,6 @@ setFilteredReports(reportList);
           </motion.div>
         )}
       </AnimatePresence>
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
 
       {/* Main Content */}
       <div className="min-h-screen flex">
@@ -584,9 +581,4 @@ setFilteredReports(reportList);
     </div>
   );
 };
-
-<<<<<<< HEAD
 export default Dashboard;
-=======
-export default Dashboard2;
->>>>>>> 7b1052ccfbabd8446f6cd1234ab75288bd08b996
