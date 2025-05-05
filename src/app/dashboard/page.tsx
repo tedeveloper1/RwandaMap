@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -53,7 +52,7 @@ const itemVariants = {
   }
 };
 
-const Dashboard = () => {
+const Dashboard2 = () => {
   const [reports, setReports] = useState([]);
   const [filteredReports, setFilteredReports] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
@@ -80,10 +79,11 @@ const Dashboard = () => {
     setIsLoading(true);
     try {
       const response = await fetch('http://localhost:5000/api/issue/getissue');
-      if (!response.ok) throw new Error('Failed to fetch reports');
       const data = await response.json();
-      setReports(data);
-      setFilteredReports(data);
+const reportList = Array.isArray(data) ? data : data.data || [];
+setReports(reportList);
+setFilteredReports(reportList);
+
     } catch (error) {
       console.error('Error fetching reports:', error);
     } finally {
@@ -95,7 +95,6 @@ const Dashboard = () => {
   const fetchCategories = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/categories');
-      if (!response.ok) throw new Error('Failed to fetch categories');
       const data = await response.json();
       setCategories(data);
       if (data.length > 0) {
@@ -166,8 +165,14 @@ const Dashboard = () => {
   const handleSubmitReport = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     try {
+      // Get user ID from sessionStorage
+      const userId = sessionStorage.getItem('userId');
+      if (!userId) {
+        throw new Error('User not authenticated - please login again');
+      }
+  
       // Get coordinates from district/sector
       const getCoordinates = async () => {
         try {
@@ -188,9 +193,9 @@ const Dashboard = () => {
           return { latitude: 0, longitude: 0 };
         }
       };
-
+  
       const { latitude, longitude } = await getCoordinates();
-
+  
       const reportPayload = {
         title: formData.title,
         description: formData.description,
@@ -201,25 +206,44 @@ const Dashboard = () => {
           sector: formData.location.sector,
           latitude,
           longitude
-        }
+        },
+        reportedBy: userId // Include the user ID from sessionStorage
       };
-
-      const response = await fetch('http://localhost:5000/api/issue', {
+  
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+        throw new Error('Authentication token missing');
+      }
+  
+      const response = await fetch(`${API_BASE}/issue?userId=${userId}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(reportPayload)
       });
-
-      if (!response.ok) throw new Error(await response.text());
-
+  
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Failed to create report');
+      }
+  
       const savedIssue = await response.json();
       setShowReportForm(false);
       fetchReports(); // Refresh reports
+      
+      setSubmitStatus({
+        success: true,
+        message: 'Report created successfully'
+      });
+  
     } catch (error) {
       console.error('Error submitting report:', error);
-      alert(`Error: ${error.message}`);
+      setSubmitStatus({
+        success: false,
+        message: error.message || 'Failed to create report'
+      });
     } finally {
       setIsLoading(false);
     }
@@ -390,46 +414,6 @@ const Dashboard = () => {
                           required
                         />
                       </div>
-
-                      {/* <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Upload Photo</label>
-                        <div className="border-2 border-dashed border-gray-300 rounded-md p-4 text-center">
-                          {formData.image ? (
-                            <div className="relative">
-                              <img 
-                                src={formData.image} 
-                                alt="Preview" 
-                                className="max-h-40 mx-auto mb-2 rounded"
-                              />
-                              <button
-                                type="button"
-                                onClick={() => setFormData(prev => ({ ...prev, image: null }))}
-                                className="absolute top-0 right-0 bg-white rounded-full p-1 shadow-sm"
-                              >
-                                <X className="h-4 w-4 text-red-500" />
-                              </button>
-                            </div>
-                          ) : (
-                            <div className="py-8">
-                              <Image className="mx-auto text-gray-400 text-3xl mb-2" />
-                              <p className="text-gray-500">Drag & drop or click to upload</p>
-                            </div>
-                          )}
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            id="issue-image"
-                            onChange={handleImageUpload}
-                          />
-                          <label 
-                            htmlFor="issue-image"
-                            className="mt-2 inline-block px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md cursor-pointer"
-                          >
-                            Choose File
-                          </label>
-                        </div>
-                      </div> */}
                     </div>
                   </div>
 
@@ -681,4 +665,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard2;
