@@ -1,18 +1,27 @@
 'use client';
-
-import { useAuth } from '../context/AuthContext';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+export default function ProtectedRoute({ 
+  children,
+  allowedRoles = [] 
+}: {
+  children: React.ReactNode;
+  allowedRoles?: string[];
+}) {
+  const { user, loading, checkSession } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/Auth');
+    if (!loading && (!user || (allowedRoles.length && !allowedRoles.includes(user.role)))) {
+      router.push('/login');
     }
-  }, [isAuthenticated, router]);
+  }, [user, loading, router, allowedRoles]);
 
-  return isAuthenticated ? <>{children}</> : null;
+  if (loading || !user || (allowedRoles.length && !allowedRoles.includes(user.role))) {
+    return <div>Loading or verifying authentication...</div>;
+  }
+
+  return <>{children}</>;
 }

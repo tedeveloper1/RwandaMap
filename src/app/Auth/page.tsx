@@ -32,6 +32,7 @@ const Login: React.FC = () => {
     });
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");

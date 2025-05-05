@@ -1,81 +1,90 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Zod validation schema (unchanged)
+const registerSchema = z.object({
+  firstname: z.string().min(2, 'First name must be at least 2 characters'),
+  lastname: z.string().min(2, 'Last name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  confirmpassword: z.string(),
+  phone: z.string().regex(/^[0-9]{9}$/, 'Invalid phone number (9 digits)').optional().or(z.literal('')),
+  district: z.string().optional(),
+  sector: z.string().optional()
+}).refine((data) => data.password === data.confirmpassword, {
+  message: "Passwords don't match",
+  path: ["confirmpassword"]
+});
+
+type FormData = z.infer<typeof registerSchema>;
 
 const Register = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmpassword: '',
-    phone: '',
-    district: '',
-    sector: '',
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(registerSchema)
   });
 
-  const [error, setError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const redirectByRole = (role: string) => {
+    const roleRoutes: Record<string, string> = {
+      'admin': '/admin/dashboard',
+      'technician': '/technician/dashboard',
+      'default': '/dashboard'
+    };
+    router.push(roleRoutes[role] || roleRoutes.default);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    // Validation
-    if (formData.password !== formData.confirmpassword) {
-      setError('Passwords do not match');
-      return;
-    }
-
-    if (!formData.firstname || !formData.lastname || !formData.email || !formData.password) {
-      setError('Please fill in all required fields');
-      return;
-    }
-
-    const userData = {
-      firstname: formData.firstname,
-      lastname: formData.lastname,
-      email: formData.email,
-      password: formData.password,
-      phone: formData.phone ? `+250${formData.phone}` : '',
-      location: {
-        district: formData.district,
-        sector: formData.sector
-      }
-    };
-
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', userData, {
-        headers: {
-          'Content-Type': 'application/json'
+      const payload = {
+        firstname: data.firstname,
+        lastname: data.lastname,
+        email: data.email,
+        password: data.password,
+        phone: data.phone ? `+250${data.phone}` : '',
+        location: {
+          district: data.district,
+          sector: data.sector
         }
-      });
-      
+      };
+
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, 
+        payload,
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true // Essential for sessions
+        }
+      );
+
       if (response.data.success) {
-        router.push('/Auth');
-      } else {
-        setError(response.data.message || 'Registration failed');
+        // Only store non-sensitive data in localStorage
+        localStorage.setItem('userRole', response.data.user.role);
+        
+        toast.success('Registration successful! Redirecting...');
+        redirectByRole(response.data.user.role);
       }
-    } catch (err: any) {
-      console.error('Registration error:', err);
-      if (err.response) {
-        setError(err.response.data?.message || 'Registration failed. Please try again.');
-      } else if (err.request) {
-        setError('No response from server. Please check your connection.');
-      } else {
-        setError('Error setting up registration request.');
-      }
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || 
+                         error.message || 
+                         'Registration failed. Please try again.';
+      
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -83,25 +92,21 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50">
-      {/* Left Panel */}
-      {/* Left Panel - Consistent with Register */}
       <div className="w-full lg:w-1/2 bg-gradient-to-br from-blue-600 to-blue-800 text-white p-8 lg:p-12 flex flex-col justify-center">
         <div className="max-w-md mx-auto lg:mx-0">
           <h1 className="text-3xl lg:text-4xl font-bold mb-6 text-center lg:text-left">
             <span className="block">Rwanda Map</span>
             <span className="block text-blue-200">Report Issue</span>
           </h1>
-          
           <p className="text-blue-100 mb-8 text-lg">
             Welcome back! Sign in to continue making an impact in your community.
           </p>
-          
           <ul className="space-y-4">
             {[
-              { icon: '🔒', text: 'Secure authentication' },
-              { icon: '📱', text: 'Access from any device' },
-              { icon: '📈', text: 'Track your reported issues' },
-              { icon: '🔔', text: 'Get status notifications' }
+              { icon: "🔒", text: "Secure authentication" },
+              { icon: "📱", text: "Access from any device" },
+              { icon: "📈", text: "Track your reported issues" },
+              { icon: "🔔", text: "Get status notifications" },
             ].map((item, index) => (
               <li key={index} className="flex items-start gap-3">
                 <span className="text-xl">{item.icon}</span>
@@ -112,7 +117,8 @@ const Register = () => {
         </div>
       </div>
 
-      {/* Right Panel */}
+
+      {/* Right Panel - Registration Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6">
         <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="p-8 sm:p-10">
@@ -126,13 +132,7 @@ const Register = () => {
               </button>
             </div>
 
-            {error && (
-              <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
-                {error}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               {/* Name Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -142,13 +142,15 @@ const Register = () => {
                   <input
                     id="firstname"
                     type="text"
-                    name="firstname"
-                    value={formData.firstname}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    {...register('firstname')}
+                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                      errors.firstname ? 'border-red-500' : 'border-gray-300'
+                    }`}
                     placeholder="John"
-                    required
                   />
+                  {errors.firstname && (
+                    <p className="mt-1 text-sm text-red-600">{errors.firstname.message}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="lastname" className="block text-sm font-medium text-gray-700 mb-1">
@@ -157,13 +159,15 @@ const Register = () => {
                   <input
                     id="lastname"
                     type="text"
-                    name="lastname"
-                    value={formData.lastname}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    {...register('lastname')}
+                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                      errors.lastname ? 'border-red-500' : 'border-gray-300'
+                    }`}
                     placeholder="Doe"
-                    required
                   />
+                  {errors.lastname && (
+                    <p className="mt-1 text-sm text-red-600">{errors.lastname.message}</p>
+                  )}
                 </div>
               </div>
 
@@ -175,13 +179,15 @@ const Register = () => {
                 <input
                   id="email"
                   type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                  {...register('email')}
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  }`}
                   placeholder="john.doe@example.com"
-                  required
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                )}
               </div>
 
               {/* Phone */}
@@ -196,15 +202,16 @@ const Register = () => {
                   <input
                     id="phone"
                     type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="flex-1 px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                    placeholder="78 123 4567"
-                    pattern="[0-9]{9}"
-                    title="Please enter a valid 9-digit phone number"
+                    {...register('phone')}
+                    className={`flex-1 px-4 py-2 border rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                      errors.phone ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                    placeholder="781234567"
                   />
                 </div>
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+                )}
               </div>
 
               {/* Location */}
@@ -216,9 +223,7 @@ const Register = () => {
                   <input
                     id="district"
                     type="text"
-                    name="district"
-                    value={formData.district}
-                    onChange={handleChange}
+                    {...register('district')}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="Enter district"
                   />
@@ -230,9 +235,7 @@ const Register = () => {
                   <input
                     id="sector"
                     type="text"
-                    name="sector"
-                    value={formData.sector}
-                    onChange={handleChange}
+                    {...register('sector')}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="Enter sector"
                   />
@@ -248,13 +251,14 @@ const Register = () => {
                   <input
                     id="password"
                     type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                    required
-                    minLength={6}
+                    {...register('password')}
+                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                      errors.password ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   />
+                  {errors.password && (
+                    <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="confirmpassword" className="block text-sm font-medium text-gray-700 mb-1">
@@ -263,22 +267,35 @@ const Register = () => {
                   <input
                     id="confirmpassword"
                     type="password"
-                    name="confirmpassword"
-                    value={formData.confirmpassword}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                    required
+                    {...register('confirmpassword')}
+                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                      errors.confirmpassword ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   />
+                  {errors.confirmpassword && (
+                    <p className="mt-1 text-sm text-red-600">{errors.confirmpassword.message}</p>
+                  )}
                 </div>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                {isSubmitting ? 'Registering...' : 'Register'}
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                  </span>
+                ) : (
+                  'Register'
+                )}
               </button>
             </form>
           </div>
