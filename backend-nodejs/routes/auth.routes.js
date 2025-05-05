@@ -6,10 +6,10 @@ const authController = require('../controllers/auth.controller');
 const authorize = () => (req, res, next) => next();
 
 // Register route
-router.post('/register', authController.registerUser);
+router.post("/register", authController.register);
 
 // Login route
-router.post('/login', authController.loginUser);
+router.post("/login", authController.login);
 
 // Admin route (requires admin authorization)
 router.get('/admin', authorize(['admin']), (req, res) => {

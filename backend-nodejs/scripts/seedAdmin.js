@@ -1,14 +1,15 @@
 // Load environment variables FIRST
-require('dotenv').config();
+const dotenv = require('dotenv')
+dotenv.config(); 
 
 // Then require dependencies
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
-
+console.log(process.env.MONGO_URI);
 // Validate environment variables
 if (!process.env.MONGO_URI) {
-  console.error('❌ Error: MONGO_URI is not defined in .env file');
+  console.error("❌ Error: MONGO_URI is not defined in .env file");
   process.exit(1);
 }
 

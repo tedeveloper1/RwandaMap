@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // 2. Security Middleware
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:3000', // or your frontend URL
+  origin: 'http://localhost:3000/', // or your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
