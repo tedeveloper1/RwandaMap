@@ -1,0 +1,1202 @@
+[
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "High"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "High"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Support beams showing signs of stress.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Wall collapse at school",
+      "description": "Support beams showing signs of stress.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "High"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Low"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "High"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Form submission timeout",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "High"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Form submission timeout",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracks in bridge support",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "High"
+    },
+    {
+      "title": "Cracks in bridge support",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "Low"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "Low"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "High"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "High"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "High"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Leaking hydrant near market",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "High"
+    },
+    {
+      "title": "Wall collapse at school",
+      "description": "Support beams showing signs of stress.",
+      "category": "Structural Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "High"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Cholera cases in village",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "High"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Support beams showing signs of stress.",
+      "category": "Structural Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "High"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Burst pipe on Elm Rd",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "Low"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "Low"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "High"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Wall collapse at school",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cholera cases in village",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Malaria spike reported",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "High"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Critical equipment shutdown due to outage.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Form submission timeout",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Suspicious package at station",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "High"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Food poisoning at event",
+      "description": "Local clinic overwhelmed with sick patients.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Wall collapse at school",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Continuous leak wasting large volumes.",
+      "category": "Water Leak",
+      "priority": "Low"
+    },
+    {
+      "title": "Cholera cases in village",
+      "description": "Patients with severe dehydration reported.",
+      "category": "Health Outbreak",
+      "priority": "Medium"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "High"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Visible cracks expanding daily.",
+      "category": "Structural Damage",
+      "priority": "High"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Low"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "High"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "No 4G signal in district",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "High"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "High"
+    },
+    {
+      "title": "Cholera cases in village",
+      "description": "Multiple cases of fever and vomiting.",
+      "category": "Health Outbreak",
+      "priority": "Low"
+    },
+    {
+      "title": "Transformer failure in sector",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Entire block without power since morning.",
+      "category": "Power Outage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Frequent blackouts downtown",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "Low"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Water contamination suspected near leak.",
+      "category": "Water Leak",
+      "priority": "High"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unattended bag found in public area.",
+      "category": "Security Threat",
+      "priority": "High"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Vehicles are experiencing damage due to deep potholes.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracked pavement near school",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Residents unable to make urgent calls.",
+      "category": "Mobile Network",
+      "priority": "High"
+    },
+    {
+      "title": "Cracks in bridge support",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Power flickering at night",
+      "description": "Intermittent power causing disruptions.",
+      "category": "Power Outage",
+      "priority": "High"
+    },
+    {
+      "title": "Collapsed sidewalk",
+      "description": "Pedestrians at risk from uneven pavement.",
+      "category": "Road Damage",
+      "priority": "Low"
+    },
+    {
+      "title": "Dropped calls in area",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "High"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "Data not saving correctly in database.",
+      "category": "Software Application",
+      "priority": "Low"
+    },
+    {
+      "title": "Login failure on gov site",
+      "description": "System returns 500 error on submit.",
+      "category": "Software Application",
+      "priority": "High"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Unauthorized entry at gate",
+      "description": "Unauthorized drone activity detected.",
+      "category": "Security Threat",
+      "priority": "Low"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Internet connectivity down for hours.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Roof damage after storm",
+      "description": "Risk of collapse if not repaired.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Cracks in bridge support",
+      "description": "Support beams showing signs of stress.",
+      "category": "Structural Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "Pothole on Main Street",
+      "description": "Drainage issue causing road collapse.",
+      "category": "Road Damage",
+      "priority": "Medium"
+    },
+    {
+      "title": "E-service portal error",
+      "description": "User unable to register new account.",
+      "category": "Software Application",
+      "priority": "Medium"
+    },
+    {
+      "title": "Slow data speeds reported",
+      "description": "Network towers appear offline.",
+      "category": "Mobile Network",
+      "priority": "Medium"
+    },
+    {
+      "title": "Crowd gathering after hours",
+      "description": "Large group loitering with no visible ID.",
+      "category": "Security Threat",
+      "priority": "Medium"
+    },
+    {
+      "title": "Broken water main",
+      "description": "Flooding of residential area due to burst pipe.",
+      "category": "Water Leak",
+      "priority": "Low"
+    }
+  ]

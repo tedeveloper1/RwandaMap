@@ -1,56 +1,31 @@
 const Issue = require('../models/Issue');
+// const { predict } = require('../ml/predict');
 
-// Create a new issue
 exports.createIssue = async (req, res) => {
-  try {
-    const { title, description, category, priority, location } = req.body;
+  // try {
+  //   const { title, description, category } = req.body;
 
-    // Validate required fields
-    if (!title || !description || !category || !priority || !location) {
-      return res.status(400).json({ 
-        message: 'Missing required fields',
-        details: {
-          required: ['title', 'description', 'category', 'priority', 'location']
-        }
-      });
-    }
+  //   const { priority, assignedTo } = await predict({ title, description, category });
 
-    // Validate location structure
-    if (!location.district || !location.sector) {
-      return res.status(400).json({ 
-        message: 'Location must include district and sector',
-        details: {
-          required: ['location.district', 'location.sector']
-        }
-      });
-    }
+  //   const newIssue = new Issue({
+  //     title,
+  //     description,
+  //     category,
+  //     priority,
+  //     assignedTo,
+  //     reportedBy: req.user.id
+  //   });
 
-    const newIssue = new Issue({
-      title,
-      description,
-      category,
-      priority,
-      location: {
-        district: location.district,
-        sector: location.sector,
-        latitude: location.latitude || 0,
-        longitude: location.longitude || 0
-      },
-      reportedBy: req.body.reportedBy || 'Anonymous' // Default if not provided
-    });
+  //   await newIssue.save();
+  //   res.status(201).json(newIssue);
 
-    const savedIssue = await newIssue.save();
-    res.status(201).json(savedIssue);
-  } catch (error) {
-    console.error('Error creating issue:', error);
-    // Return more detailed error message
-    res.status(500).json({ 
-      message: 'Server error while creating issue.',
-      error: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
-    });
-  }
+  // } catch (error) {
+  //   console.error('Error creating issue:', error);
+  //   res.status(500).json({ message: 'Server error' });
+  // }
 };
+
+
 
 // Get all issues
 exports.getAllIssues = async (req, res) => {
@@ -63,7 +38,7 @@ exports.getAllIssues = async (req, res) => {
     res.status(200).json(issues);
   } catch (error) {
     console.error('Error fetching issues:', error);
-    res.status(500).json({ message: 'Server error while fetching issues.' });
+    res.status(500).json({ message: 'Server error while fetching issues.',issues });
   }
 };
 
